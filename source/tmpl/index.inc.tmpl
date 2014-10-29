@@ -1,0 +1,162 @@
+<style type="text/css">
+
+    .ukmc-hypertabs {
+        display: none;
+        position: relative;
+        overflow: hidden;
+        height: 41px;
+        margin: 0 0 16px 0;
+        color: #505050;
+        font-family: Arial, Helmet, Freesans, sans-serif;
+        line-height: 16px;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .ukmc-hypertabs .hypertab-container {
+        overflow: hidden;
+        position: relative;
+        background: #eee;
+    }
+
+    .ukmc-hypertabs .hypertab-container ul {
+        margin: 0;
+        position: relative;
+        border-top: 8px solid #eee;
+        border-left: 8px solid #eee;
+        border-right: 8px solid #eee;
+        background: #eee;
+        height: 33px;
+        padding: 0;
+        list-style: none;
+    }
+
+    .ukmc-hypertabs .hypertab-container ul li {
+        float: left;
+        font-weight: bold;
+        margin: 5px 0 5px 0;
+        text-align: center;
+        border-right: 1px solid #666;
+        background-image: none;
+        padding: 0;
+        list-style: none;
+    }
+
+    .ukmc-hypertabs .hypertab-container ul li a {
+        display: block;
+        padding: 0 10px;
+        font-weight: bold;
+        white-space: nowrap;
+        font-size: 0.875em;
+        text-rendering: auto;
+        color: #1F4F82;
+    }
+
+    .ukmc-hypertabs .hypertab-container ul li a:hover {
+        text-decoration: underline;
+    }
+
+    .ukmc-hypertabs .hypertab-container ul li a:visited {
+        color: #4A7194;
+    }
+
+    .ukmc-hypertabs .hypertab-container ul .last-child {
+        border-right: none;
+    }
+
+    .ukmc-hypertabs .hypertab-container ul .selected {
+        margin: 0 0 0 -1px;
+        padding: 5px 0 0 0;
+        height: 33px;
+        background: #fff;
+        color: #d1700e;
+        border: none;
+    }
+
+    .ukmc-hypertabs .hypertab-container ul .selected a,
+    .ukmc-hypertabs .hypertab-container ul .selected a:visited {
+        color: #d1700e;
+    }
+
+    @media (min-width: 957px) {
+
+        .ukmc-hypertabs {
+            display: block;
+        }
+    }
+
+    @media (min-width: 1008px) {
+        .column--primary {
+
+            float: left;
+            width: 100%;
+
+        }
+        .column--secondary {
+
+            float: right;
+            width: 100%;
+
+        }
+    }
+
+    @media=(min-width: 600px) {
+        .features-and-analysis {
+
+            margin-left: -8px;
+            margin-right: -8px;
+
+        }
+    }
+
+</style>
+
+<!--[if lt IE 9]>
+    <style type="text/css">
+
+        .ukmc-hypertabs {
+            display: block;
+        }
+
+    </style>
+<![endif]-->
+
+<%
+    iframeUid = "responsive-iframe-" + Math.floor(Math.random() * 100000000);
+%>
+<script>
+    if ((!document.addEventListener) || (!Array.prototype.indexOf) || (!Array.prototype.forEach) ) {
+        document.write('<sc' + 'ript src="<%= path %>/<%= vocab_dir %>/js/lib/vendors/legacy-ie-polyfills.js?v=<%= version %>"></sc' + 'ript>');
+    }
+</script>
+
+<div id="hypertab" class="hypertabs">
+    <div class="hypertab-container">
+        <ul style="width: 291px;">
+            <li class="selected">
+                <a href="/news/uk-10629358">Full list</a>
+            </li>
+
+            <li>
+                <a href="http://www.bbc.co.uk/news/uk-10634173">In pictures</a>
+            </li>
+
+            <li class="last-child">
+                <a href="http://www.bbc.co.uk/news/uk-15188729">How they died</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--#if expr="${HTTP_USER_AGENT} = /MSIE [4-9]/"-->
+    <!--#include virtual="/nol/shared/spl/hi/in_depth/uk_military_casualties_v6/afghanistan/inc/uk_afghanistan_casualties_table.inc"-->
+<!--#else -->
+
+<div>
+    <a href="<%= path %>/<%= vocab_dir %>/index.html?v=<%= version %>" id="<%= iframeUid %>" data-static-iframe-height="600">Click to view the full list of UK military casualties in Afghanistan</a>
+</div>
+<style>
+<%= include("../scss/news_special/loading.css") %>
+</style>
+<script type="text/javascript"><%= include("../js/lib/news_special/iframemanager__host.js", {iframeUid: iframeUid}) %></script>
+<!--#endif -->

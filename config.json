@@ -1,0 +1,15 @@
+{
+  "debug":          "false",
+  "whichEnv":       "local",
+  "project_number": "6761",
+  "year":           "2014",
+  "imageWidths":    ["320", "640", "1024"],
+  "vocabs": {
+    "googleSpreadsheetId": "--REPLACEME--",
+    "worksheet":           "Sheet1"
+  },
+  "services": {
+    "default": "english",
+    "others": [""]
+  }
+}

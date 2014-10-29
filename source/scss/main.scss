@@ -1,0 +1,854 @@
+$path: '/news/special/2014/newsspec_6761/content/english/css/f/';
+
+$color-default: #404040;
+$color-2: #909090;
+
+$color-link: #1f4f82;
+$color-visited: #4A7194;
+
+$color-total: #f4811a;
+$color-hostile: #5f5c31;
+$color-accident: #837a2b;
+$color-other: #9e9631;
+
+$screen-width-offset: 16px;
+
+@import "news_special/defaults";
+
+/* Loading spinner */
+/*@-webkit-keyframes spinnerRotate {
+    from{-webkit-transform:rotate(0deg);}
+    to{-webkit-transform:rotate(360deg);}
+}
+@-moz-keyframes spinnerRotate {
+    from{-moz-transform:rotate(0deg);}
+    to{-moz-transform:rotate(360deg);}
+}
+@-ms-keyframes spinnerRotate {
+    from{-ms-transform:rotate(0deg);}
+    to{-ms-transform:rotate(360deg);}
+}*/
+
+.loading,
+.all-years-list,
+.all-years-list-headers {
+    display: none;
+}
+
+.sorting {
+    opacity: 0.4;
+}
+
+.main img {
+    width: 100%;
+}
+
+.main {
+    padding: 0 8px;
+
+    .bbc-news-visual-journalism-loading-spinner {
+        font-family: sans-serif;
+        padding: 10px 0;
+        text-align: center;
+        background-color: #fff;
+    }
+    .bbc-news-visual-journalism-loading-spinner__text {
+        padding-bottom: 10px;
+    }
+    .bbc-news-visual-journalism-loading-spinner__img {
+        display: block;
+        width: 33px;
+        height: 33px;
+        padding: 8px 0;
+        margin-left: auto;
+        margin-right: auto;
+        background: url(data:image/gif;base64,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) no-repeat center center;
+        /*-webkit-animation-name: spinnerRotate;
+        -webkit-animation-duration: 5s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+        -moz-animation-name: spinnerRotate;
+        -moz-animation-duration: 5s;
+        -moz-animation-iteration-count: infinite;
+        -moz-animation-timing-function: linear;
+        -ms-animation-name: spinnerRotate;
+        -ms-animation-duration: 5s;
+        -ms-animation-iteration-count: infinite;
+        -ms-animation-timing-function: linear;*/
+    }
+}
+
+p,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+li {
+    color: $color-default;
+}
+
+
+a {
+    text-decoration: none;
+    color: $color-link;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:visited {
+    color: $color-visited;
+}
+
+h2 em,
+.name_col,
+.rank_col,
+.age_col,
+.from_col,
+.served_col,
+.incident_col,
+.place_col,
+.date_col {
+    text-transform: uppercase;
+    font-style: normal;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.centred-block {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.data-label,
+.data-figure {
+    color: $color-2;
+}
+
+.data-section-wrapper {
+    width: 206px;
+}
+
+.data-section__causes {
+    position: relative;
+    width: 206px;
+    margin: 22px 0 0 0;
+    padding: 0;
+    height: 216px;
+    list-style: none;
+
+    li {
+        text-align: right;
+        list-style: none;
+
+        span {
+            display: inline-block;
+            font-size: 1.125em;
+            font-weight: bold;
+            line-height: 1.5em;
+        }
+
+        .data-label {
+            clear: both;
+        }
+
+        .data-label:after {
+            content: ':';
+        }
+
+        .bar {
+            display: block;
+            position: absolute;
+            width: 54px;
+        }
+    }
+
+    .total { 
+        span {
+            display: block;
+            color: $color-total;
+        }
+
+        .data-figure {
+            font-size: 4.25em;
+            padding: 0 0 6px 0;
+            line-height: 0.941em;
+        }
+
+    }
+
+    .hostile { 
+        span {
+            color: $color-hostile;
+        }
+
+        .bar {
+            background-color: $color-hostile;
+            left: 0;
+            bottom: 0;
+        }
+    }
+
+    .accident { 
+        span {
+            color: $color-accident;
+        }
+
+        .bar {
+            background-color: $color-accident;
+            left: 76px;
+            bottom: 0;
+        }
+    }
+
+    .other { 
+        span {
+            color: $color-other;
+        }
+
+        .bar {
+            background-color: $color-other;
+            right: 0;
+            bottom: 0;
+        }
+    }
+}
+
+.nav-section__years {
+    a {
+        clear: both;
+        display: block;
+        padding: 4px 0;
+
+        span {
+            display: inline-block;
+        }
+
+        .year {
+            color: $color-link;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .data-figure {
+            min-width: 36px;
+            text-align: right;
+        }
+    }
+    a:hover {
+        text-decoration: none;
+
+        .year {
+            text-decoration: underline;
+        }
+    }
+    a:visited {
+
+        .year {
+            color: $color-visited;
+        }
+    }
+}
+
+
+/* Yearly pages */
+.year__list__header {
+    color: $color-2;
+    font-size: 1.00em;
+    line-height: 1.00em;
+    margin: 0 0 16px 0;
+    padding: 26px 0 7px 0;
+    border-bottom: 1px solid $color-2;
+
+    span {
+        font-weight: normal;
+    }
+
+    .year {
+        font-weight: bold;
+        color: $color-default;
+    }
+    .year:after{
+        content: ' - ';
+        color: $color-2;
+        font-weight: normal;
+    }
+}
+.cta {
+    font-size: 1.375em;
+    color: #d1700e;
+    margin: 0;
+    padding: 16px 0 16px 58px;
+    background: url("/news/special/2014/newsspec_7103/content/english/css/f/nav_sprite.png") no-repeat -104px 2px transparent;
+    line-height: 1.00em;
+}
+
+.year__list {
+    width: 95%;
+}
+
+.casualty-record {
+
+    font-size: 1.00em;
+    line-height: 1.25em;
+    margin-bottom: 24px;
+    clear: both;
+
+    .casualty-record--rank,
+    .casualty-record--county,
+    .casualty-record--hometown,
+    .casualty-record--service,
+    .casualty-record--unit,
+    .casualty-record--service-detail,
+    .casualty-record--cause-description,
+    .casualty-record--incident-region,
+    .casualty-record--incident-area,
+    .casualty-record--date {
+        display: none;
+    }
+
+    h3 {
+        font-size: 1.00em;
+        line-height: 1.25em;
+        margin-bottom: 0;
+    }
+
+    .casualty-record--cause,
+    .casualty-record--cause-detail {
+        display: block;
+        float: left;
+    }
+    .casualty-record--cause:before {
+        content: 'Cause of death: ';
+    }
+    .casualty-record--cause:after {
+        content: ':';
+    }
+    .casualty-record--cause-detail {
+        margin-left: 4px;
+    }
+    .no-data:before {
+        content: '';
+    }
+
+    .casualty-record--story-link {
+        clear: both;
+        display: block;
+        font-weight: bold;
+    }
+
+    .casualty-record--portrait--enabled {
+        width: 66px;
+        height: 49px;
+        float: left;
+        margin: auto 8px auto 0;
+        padding-bottom: 28px;
+        background-repeat: no-repeat;
+        background-size: 66px 49px;
+    }
+
+}
+
+.link__back {
+    display: block;
+    text-align: right;
+    padding: 0 0 32px 0;
+}
+
+/* Select menu */
+
+.nav-section__years--select-wrapper {
+    display: block;
+    width: 90%;
+    margin: 16px 0 16px 2px;
+    padding: 0;
+    border: 1px solid #ccc;
+    position: relative;
+
+    select {
+        display: block;
+        width: 100%;
+        padding: 14px;
+        background-color: transparent;
+        border: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: none;
+        font-weight: bold;
+
+        option {
+            color: #404040;
+            font-weight: normal;
+        }
+
+    }
+
+    &:after {
+        background: none no-repeat scroll 0 0 #fff;
+        border-left: 1px solid #cccccc;
+        border-radius: 0 0 0 0;
+        bottom: 0;
+        color: black;
+        content: url($path + "icons.png");
+        line-height: 1.59em;
+        padding: 0.8em 0.8em;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+.main-data-block {
+    position: relative;
+}
+
+
+/* Details panel */
+
+.detail-panel-container {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 990;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.detail-panel {
+    position: relative;
+    margin: 32px auto 32px auto;
+    padding: 8px;
+    width: 90%;
+    min-height: 224px;
+    background: #fff;
+    z-index: 991;
+
+    .close-link {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        text-indent: -999px;
+        width: 32px;
+        height: 32px;
+        background: url($path + "close.gif") no-repeat center center transparent;
+    }
+
+    h3 {
+        margin-top: 6px;
+    }
+
+    img {
+        float: right;
+        margin-left: 12px;
+        margin-bottom: 12px;
+        width: 170px;
+        height: 170px;
+    }
+
+    .detail-item--rank,
+    .detail-item--age,
+    .detail-item--from,
+    .detail-item--place,
+    .detail-item--accident,
+    .detail-item--hostile,
+    .detail-item--other,
+    .detail-item--army,
+    .detail-item--marines,
+    .detail-item--raf {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .detail-item--rank:before {
+        content: "Rank: ";
+        color: $color-2;
+    }
+
+    .detail-item--age:before {
+        content: "Age: ";
+        color: $color-2;
+    }
+
+    .detail-item--from:before {
+        content: "From: ";
+        color: $color-2;
+    }
+
+    .detail-item--place:before {
+        content: "Place: ";
+        color: $color-2;
+    }
+
+    .detail-item--accident:before {
+        content: "Accident: ";
+        color: $color-2;
+    }
+
+    .detail-item--hostile:before {
+        content: "Hostile: ";
+        color: $color-2;
+    }
+
+    .detail-item--other:before {
+        content: "Other: ";
+        color: $color-2;
+    }
+
+    .detail-item--army:before {
+        content: "Army: ";
+        color: $color-2;
+    }
+
+    .detail-item--marines:before {
+        content: "Royal Marines: ";
+        color: $color-2;
+    }
+
+    .detail-item--raf:before {
+        content: "RAF: ";
+        color: $color-2;
+    }
+}
+
+.detail-content {
+    width: 100%;
+}
+
+
+@include respondMinMax (480px - $screen-width-offset, false) {
+
+    .data-section-wrapper {
+        width: 407px;
+    }
+
+    .data-section__causes {
+        margin-right: 181px;
+        
+    }
+
+    .year__list {
+        width: 90%;
+    }
+
+    .casualty-record {
+        position: relative;
+    }
+
+}
+
+@include respondMinMax (768px - $screen-width-offset, false) {
+
+    .how-container,
+    .cta,
+    .nav-section__years--select-wrapper {
+        display: none;
+    }
+
+    .all-years-list,
+    .all-years-list-headers {
+        display: block;
+    }
+
+    .all-years-list-cta,
+    .all-years-list-headers,
+    .all-years-list,
+    .bbc-news-visual-journalism-loading-spinner {
+        margin: 0;
+        width: 768px - $screen-width-offset;
+    }
+
+    .all-years-list-cta {
+        background: #505050;
+        font-size: 0.875em;
+        font-weight: normal;
+        color: #fff;
+        text-align: left;
+        padding: 2px 0;
+        margin-bottom: 1px;
+
+        .em {
+            padding: 0 4px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        .em:after {
+            content: ':';
+        }
+    }
+
+    .tl-column-block {
+
+        display: table-cell;
+        height: 100%;
+        vertical-align: top;
+        padding: 4px 4px;
+        font-size: 0.75em;
+        line-height: 1.00em;
+        text-align: left;
+        border-right: 1px solid #fff;
+
+        .em {
+            display: block;
+            font-weight: bold;
+            margin: 4px 0 8px 0;
+        }
+
+    }
+
+    .all-years-list-headers {
+
+        .tl-column-block {
+            color: #fff;
+            background-color: #78b200;
+            text-transform: uppercase;
+            display: table-cell;
+
+            a {
+                color: #fff;
+                display: block;
+                font-weight: normal;
+                margin: 0;
+            }
+        }
+
+        .tl-age-column-block {
+            width: 28px;
+            padding-right: 0;
+        }
+
+    }
+
+    .all-years-list {
+        margin-bottom: 32px;
+    }
+
+    .tl-name-column-block {
+
+        width: 96px;
+        /*width: 14%;*/
+
+        img {
+            width: 66px;
+            height: 49px;
+        }
+    }
+
+    .tl-rank-column-block {
+        width: 92px;
+        /*width: 13.5%;*/
+    }
+
+    .tl-age-column-block {
+        width: 24px;
+        /*width: 4.5%;*/
+    }
+
+    .tl-from-column-block {
+        width: 92px;
+        /*width: 13.5%;*/
+    }
+
+    .tl-service-column-block {
+        width: 96px;
+        /*width: 14%;*/
+    }
+
+    .tl-cause-column-block {
+        width: 114px;
+        /*width: 16.7%;*/
+
+        a {
+            display: block;
+            font-weight: bold;
+            margin :8px 0 8px 0;
+        }
+    }
+
+    .tl-place-column-block {
+        width: 88px;
+        /*width: 13%;*/
+    }
+
+    .tl-date-column-block {
+        width: 79px;
+        /*width: 10.5%;*/
+        border: none;
+    }
+
+    .casualty-record {
+
+        clear: both;
+        margin: 1px 0 0 0;
+
+        .casualty-record--rank,
+        .casualty-record--county,
+        .casualty-record--hometown,
+        .casualty-record--service,
+        .casualty-record--unit,
+        .casualty-record--service-detail,
+        .casualty-record--cause-detail,
+        .casualty-record--cause-description,
+        .casualty-record--incident-region,
+        .casualty-record--incident-area,
+        .casualty-record--date {
+            display: block;
+        }
+
+        .tl-name-column-block {
+
+            img {
+                width: 66px;
+                height: 49px;
+            }
+        }
+
+        .tl-age-column-block,
+        .tl-date-column-block {
+
+            span {
+                text-align: right;
+            }
+        }
+
+    }
+    .casualty-record:nth-child(odd) {
+
+        .tl-column-block {
+            background-color: #ededed;
+        }
+
+    }
+
+}
+
+@include respondMinMax (973px - $screen-width-offset, false) {
+
+    .all-years-list-cta,
+    .all-years-list-headers,
+    .all-years-list,
+    .bbc-news-visual-journalism-loading-spinner {
+        width: 973px - $screen-width-offset;
+    }
+
+    .all-years-list-headers {
+
+        .tl-age-column-block {
+            width: 34px;
+            padding-right: 0;
+        }
+
+    }
+
+    .tl-name-column-block {
+
+        width: 118px;
+        /*width: 14%;*/
+    }
+
+    .tl-rank-column-block {
+        width: 108px;
+        /*width: 13.5%;*/
+    }
+
+    .tl-age-column-block {
+        width: 30px;
+        /*width: 4.5%;*/
+    }
+
+    .tl-from-column-block {
+        width: 124px;
+        /*width: 13.5%;*/
+    }
+
+    .tl-service-column-block {
+        width: 124px;
+        /*width: 14%;*/
+    }
+
+    .tl-cause-column-block {
+        width: 182px;
+        /*width: 16.7%;*/
+    }
+
+    .tl-place-column-block {
+        width: 120px;
+        /*width: 13%;*/
+    }
+
+    .tl-date-column-block {
+        width: 80px;
+        /*width: 10.5%;*/
+        border: none;
+    }
+
+}
+
+@include respondMinMax (973px, false) {
+
+    .all-years-list-cta,
+    .all-years-list-headers,
+    .all-years-list {
+        width: 973px;
+    }
+
+    .all-years-list-headers {
+
+        .tl-age-column-block {
+            width: 34px;
+            padding-right: 0;
+        }
+
+    }
+
+    .tl-name-column-block {
+
+        width: 118px;
+        /*width: 14%;*/
+    }
+
+    .tl-rank-column-block {
+        width: 108px;
+        /*width: 13.5%;*/
+    }
+
+    .tl-age-column-block {
+        width: 30px;
+        /*width: 4.5%;*/
+    }
+
+    .tl-from-column-block {
+        width: 126px;
+        /*width: 13.5%;*/
+    }
+
+    .tl-service-column-block {
+        width: 126px;
+        /*width: 14%;*/
+    }
+
+    .tl-cause-column-block {
+        width: 186px;
+        /*width: 16.7%;*/
+    }
+
+    .tl-place-column-block {
+        width: 126px;
+        /*width: 13%;*/
+    }
+
+    .tl-date-column-block {
+        width: 82px;
+        /*width: 10.5%;*/
+        border: none;
+    }
+
+}
+
+
